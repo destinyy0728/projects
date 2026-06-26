@@ -46,7 +46,7 @@ st.markdown(custom_css, unsafe_allow_html=True)
 # ----------------- 数据与模型加载 -----------------
 @st.cache_data
 def load_raw_data():
-   if os.path.exists('ved-analytics/VED_Combustion_Master_Cleaned.csv'):
+    if os.path.exists('ved-analytics/VED_Combustion_Master_Cleaned.csv'):
         return pd.read_csv('ved-analytics/VED_Combustion_Master_Cleaned.csv', nrows=500)
     return pd.DataFrame()
 
