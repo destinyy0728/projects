@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孙士博的项目作品集</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --accent-color: #3498db;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 1px solid #eaeaea;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .project-title {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-title::after {
+            content: '→';
+            color: var(--accent-color);
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-title::after {
+            opacity: 1;
+        }
+
+        .project-desc {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #e1f0fa;
+            color: var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 30px 15px; }
+            .project-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>孙士博的项目作品集</h1>
+            <p class="subtitle">您好，这是我的部分项目报告与实践总结，欢迎审阅。</p>
+        </header>
+
+        <div class="projects">
+            <!-- 项目一 -->
+            <a href="./基于出行链的货运车辆运行模式识别与区域协同调度优化 (1).pdf" target="_blank" class="project-card">
+                <div class="project-title">基于出行链的货运车辆运行模式识别与区域协同调度优化</div>
+                <p class="project-desc">深入分析货运车辆的出行轨迹数据，识别复杂的运行模式，并提出区域级的协同调度优化方案，旨在提升整体物流运输效率。</p>
+                <span class="tag">查看 PDF 报告</span>
+            </a>
+
+            <!-- 项目二 -->
+            <a href="./机器学习ppt.pdf" target="_blank" class="project-card">
+                <div class="project-title">机器学习应用与实践</div>
+                <p class="project-desc">全面展示机器学习算法在解决实际问题中的应用，内容涵盖底层数据处理、模型构建训练、以及最终的效果评估与调优。</p>
+                <span class="tag">查看 PDF 报告</span>
+            </a>
+            <!-- 项目三 (VED能耗预测) -->
+            <a href="https://github.com/destinyy0728/projects/tree/main/ved-analytics" target="_blank" class="project-card">
+                <div class="project-title">VED 新能源汽车轨迹与能耗预测系统</div>
+                <p class="project-desc">基于 2300万+ 行的开源车辆轨迹数据集，使用 PySpark 在云端进行大数据 ETL 与高阶业务特征提取，并结合 K-Means 和 XGBoost 算法实现驾驶行为画像与精准能耗预估的端到端项目。</p>
+                <div style="margin-top: 10px;">
+                    <span class="tag" style="background-color: #e8f5e9; color: #2e7d32;">查看 GitHub 源码</span>
+                    <span class="tag" style="background-color: #fff3e0; color: #1565c0; margin-left: 10px;">即将上线: 在线交互系统</span>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>© 2026 孙士博. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
