@@ -46,17 +46,17 @@ st.markdown(custom_css, unsafe_allow_html=True)
 # ----------------- 数据与模型加载 -----------------
 @st.cache_data
 def load_raw_data():
-    if os.path.exists('VED_Combustion_Master_Cleaned.csv'):
-        return pd.read_csv('VED_Combustion_Master_Cleaned.csv', nrows=500)
+   if os.path.exists('ved-analytics/VED_Combustion_Master_Cleaned.csv'):
+        return pd.read_csv('ved-analytics/VED_Combustion_Master_Cleaned.csv', nrows=500)
     return pd.DataFrame()
 
 @st.cache_data
 def load_profile_data():
-    return pd.read_parquet('driver_profiles.parquet')
+    return pd.read_parquet('ved-analytics/driver_profiles.parquet')
 
 @st.cache_resource
 def load_model():
-    with open('xgb_model.pkl', 'rb') as f:
+    with open('ved-analytics/xgb_model.pkl', 'rb') as f:
         return pickle.load(f)
 
 df_raw = load_raw_data()
