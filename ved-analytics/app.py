@@ -46,8 +46,9 @@ st.markdown(custom_css, unsafe_allow_html=True)
 # ----------------- 数据与模型加载 -----------------
 @st.cache_data
 def load_raw_data():
-    if os.path.exists('ved-analytics/VED_Combustion_Master_Cleaned.csv'):
-        return pd.read_csv('ved-analytics/VED_Combustion_Master_Cleaned.csv', nrows=500)
+    if os.path.exists('ved-analytics/VED_Sample.csv'):
+        # 读取 500,000 行抽样快照，但由于前端表格渲染限制，取前10000行进行UI展示，以防浏览器内存溢出
+        return pd.read_csv('ved-analytics/VED_Sample.csv', nrows=10000)
     return pd.DataFrame()
 
 @st.cache_data
@@ -119,12 +120,12 @@ if st.sidebar.button("执行能耗预测"):
 tab1, tab2, tab3 = st.tabs(["01 / 原始轨迹数据集", "02 / 驾驶员特征宽表", "03 / 驾驶行为聚类分析"])
 
 with tab1:
-    st.markdown("### 原始车辆轨迹时序数据快照")
-    st.markdown("直接读取用户本地的原始高频时序 CSV 文件。为保证前端性能，此处仅对该千万级文件的**前 500 行**进行抽样快照展示。此步骤证明了底层数据来源的真实性与数据字段结构。")
+    st.markdown("### 原始车辆轨迹时序数据抽样快照")
+    st.markdown("底层数据源自千万级高频时序 VED 数据集。为适配前端渲染性能，此处对原始 CSV 文件进行 50 万行级别抽样快照展示，以呈现底层数据结构。原始开源全量数据详见 [Kaggle VED Segregated](https://www.kaggle.com/datasets/yashseth25/ved-segregated)。")
     if not df_raw.empty:
         st.dataframe(df_raw, use_container_width=True, height=400)
     else:
-        st.error("未能在本地目录找到原始 CSV 文件。")
+        st.error("未能在指定目录找到抽样快照 CSV 文件。")
 
 with tab2:
     st.markdown("### ETL 降维特征宽表 (Parquet)")
